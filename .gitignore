@@ -1,0 +1,4 @@
+UtilsVenv/
+*.ipynb_checkpoints/
+*.ipynb
+*__pycache__/
