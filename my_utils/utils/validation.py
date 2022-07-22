@@ -1,6 +1,7 @@
 import numpy as np
+from typing import Tuple
 
-def check_and_convert_array(y_true, y_pred, K: int) -> (np.ndarray, np.ndarray):
+def check_and_convert_array(y_true, y_pred, K: int) -> Tuple[np.ndarray, np.ndarray]:
     """
     Вспомогательная функция для преобразования входных массивов в np.array и проверок.
     Parameters
