@@ -2,3 +2,5 @@ UtilsVenv/
 *.ipynb_checkpoints/
 *.ipynb
 *__pycache__/
+dist/
+*.egg-info/
