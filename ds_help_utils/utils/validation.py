@@ -1,37 +1,63 @@
 import numpy as np
 from typing import Tuple
 
-def check_and_convert_array(y_true, y_pred, K: int) -> Tuple[np.ndarray, np.ndarray]:
-    """
-    Вспомогательная функция для преобразования входных массивов в np.array и проверок.
+def check_and_convert_array(y_true, y_score, K: int) -> Tuple[np.ndarray, np.ndarray]:
+    """Auxiliary function for converting input arrays to np.array and checks.
+
     Parameters
     ----------
-        y_true : Истинные метки классов (0 или 1).
-        y_pred : Предсказания модели (вероятности).
-        K : K первых ранжированных элементов.
+    y_true : array-like of shape (n_samples,)
+        True class labels (0 or 1).
+
+    y_score : array-like of shape (n_samples,)
+        Model predictions.
+
+    K : int
+        The first K ranked elements.
+
+    Returns
+    -------
+    y_true : ndarray of shape (n_samples,)
+        True class labels (0 or 1).
+
+    y_score : ndarray of shape (n_samples,)
+        Model predictions.
     """
-    y_true, y_pred = np.array(y_true), np.array(y_pred)
-    if not (y_true.shape == y_pred.shape) :
-        raise ValueError(f"Размерности исходных массивов должны совпадать. " +\
-                         "Размерность y_true = {y_true.shape}, размерность y_pred = {y_pred.shape}.")
-    if not (y_true.ndim == 1):
-        raise ValueError(f"Размерность исходных массивов должна быть равна 1, размерность исходных массивов = {y_true.ndim}.")
-    if not (len(y_true) > 0):
-        raise ValueError("Длина исходных массивов должна быть больше 0.")
-    if not (K > 0):
-        raise ValueError("K должен быть больше 0.")
-    if not (K <= len(y_true)):
-        raise ValueError(f"K не может быть больше длины исходных массивов. Длина исходных массивов = {len(y_true)}, K = {K}.")
-    return (y_true, y_pred)
     
-def rank_target(y_true: np.ndarray, y_pred: np.ndarray, K: int) -> np.ndarray:
-    """
-    Вспомогательная функция для ранжирования истинных меток классов по убыванию значений предсказаний модели.
+    y_true, y_score = np.array(y_true), np.array(y_score)
+    if not (y_true.shape == y_score.shape) :
+        raise ValueError("The dimensions of the source arrays must match. " +\
+                        f"Dimension y_true = {y_true.shape}, dimension y_score = {y_score.shape}.")
+    if not (y_true.ndim == 1):
+        raise ValueError(f"The dimension of the source arrays must be equal to 1, the dimension of the source arrays = {y_true.ndim}.")
+    if not (len(y_true) > 0):
+        raise ValueError("The length of the source arrays must be greater than 0.")
+    if not (K > 0):
+        raise ValueError("K must be greater than 0.")
+    if not (K <= len(y_true)):
+        raise ValueError("K cannot be greater than the length of the original arrays. " +\
+                        f"The length of the source arrays = {len(y_true)}, K = {K}.")
+    return (y_true, y_score)
+    
+def rank_target(y_true: np.ndarray, y_score: np.ndarray, K: int) -> np.ndarray:
+    """An auxiliary function for ranking the true class labels in descending order of the values of the model predictions.
+
     Parameters
     ----------
-        y_true : Истинные метки классов (0 или 1).
-        y_pred : Предсказания модели (вероятности).
-        K : K первых ранжированных элементов.
+    y_true : array-like of shape (n_samples,)
+        True class labels (0 or 1).
+
+    y_score : array-like of shape (n_samples,)
+        Model predictions.
+        
+    K : int
+        The first K ranked elements.
+
+    Returns
+    -------
+    y_ranked : ndarray of shape (n_samples,)
+        The first K labels after ranking.
     """
-    idx_sort = y_pred.argsort()[::-1]
+
+    idx_sort = y_score.argsort()[::-1]
     return y_true[idx_sort][:K]
