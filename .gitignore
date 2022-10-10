@@ -4,3 +4,4 @@ UtilsVenv/
 *__pycache__/
 dist/
 *.egg-info/
+*catboost_info
