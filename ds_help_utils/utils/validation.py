@@ -2,7 +2,7 @@ import numpy as np
 from typing import Tuple
 
 def check_and_convert_array(y_true, y_score, K: int) -> Tuple[np.ndarray, np.ndarray]:
-    """Auxiliary function for converting input arrays to np.array and checks.
+    """An auxiliary function for converting input arrays to np.array and checks.
 
     Parameters
     ----------
@@ -10,7 +10,7 @@ def check_and_convert_array(y_true, y_score, K: int) -> Tuple[np.ndarray, np.nda
         True class labels (0 or 1).
 
     y_score : array-like of shape (n_samples,)
-        Model predictions.
+        Model's predictions.
 
     K : int
         The first K ranked elements.
@@ -21,7 +21,7 @@ def check_and_convert_array(y_true, y_score, K: int) -> Tuple[np.ndarray, np.nda
         True class labels (0 or 1).
 
     y_score : ndarray of shape (n_samples,)
-        Model predictions.
+        Model's predictions.
     """
     
     y_true, y_score = np.array(y_true), np.array(y_score)
@@ -40,7 +40,7 @@ def check_and_convert_array(y_true, y_score, K: int) -> Tuple[np.ndarray, np.nda
     return (y_true, y_score)
     
 def rank_target(y_true: np.ndarray, y_score: np.ndarray, K: int) -> np.ndarray:
-    """An auxiliary function for ranking the true class labels in descending order of the values of the model predictions.
+    """An auxiliary function for ranking the true class labels in descending order of the values of the Model's predictions.
 
     Parameters
     ----------
@@ -48,7 +48,7 @@ def rank_target(y_true: np.ndarray, y_score: np.ndarray, K: int) -> np.ndarray:
         True class labels (0 or 1).
 
     y_score : array-like of shape (n_samples,)
-        Model predictions.
+        Model's predictions.
         
     K : int
         The first K ranked elements.

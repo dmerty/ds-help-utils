@@ -1,6 +1,5 @@
 import numpy as np
-from ..utils import check_and_convert_array
-from ..utils import rank_target
+from ..utils import check_and_convert_array, rank_target
 
 def precision_at_k(y_true, y_score, K: int) -> np.float64:
     """Calculation Precision@K.
@@ -11,7 +10,7 @@ def precision_at_k(y_true, y_score, K: int) -> np.float64:
         True class labels (0 or 1).
 
     y_score : array-like of shape (n_samples,)
-        Model predictions.
+        Model's predictions.
 
     K : int
         The first K ranked elements.
@@ -44,7 +43,7 @@ def recall_at_k(y_true, y_score, K: int) -> np.float64:
         True class labels (0 or 1).
 
     y_score : array-like of shape (n_samples,)
-        Model predictions.
+        Model's predictions.
 
     K : int
         The first K ranked elements.
@@ -77,7 +76,7 @@ def average_precision_at_k(y_true, y_score, K: int) -> np.float64:
         True class labels (0 or 1).
 
     y_score : array-like of shape (n_samples,)
-        Model predictions.
+        Model's predictions.
 
     K : int
         The first K ranked elements.
@@ -111,7 +110,7 @@ def discounted_cumulative_gain_at_k(y_true, y_score, K: int) -> np.float64:
         True class labels (0 or 1).
 
     y_score : array-like of shape (n_samples,)
-        Model predictions.
+        Model's predictions.
 
     K : int
         The first K ranked elements.
@@ -144,7 +143,7 @@ def normalized_discounted_cumulative_gain_at_k(y_true, y_score, K: int) -> np.fl
         True class labels (0 or 1).
 
     y_score : array-like of shape (n_samples,)
-        Model predictions.
+        Model's predictions.
 
     K : int
         The first K ranked elements.
