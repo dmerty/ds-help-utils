@@ -33,8 +33,7 @@ class HighCorrRemoval(BaseEstimator, TransformerMixin):
     >>> from sklearn.datasets import make_classification
     >>> from ds_help_utils.feature_selection import HighCorrRemoval
     >>> X, y = make_classification(n_samples=5, n_features=5, n_informative=3, random_state=42)
-    >>> X = pd.DataFrame(X)
-    >>> X.columns = [f"feature_{i}" for i in X.columns]
+    >>> X = pd.DataFrame(X, index = [f"feature_{i}" for i in range(X.shape[1])])
     >>> X["feature_x"] = 1
     >>> print(X.corr())
                 feature_0  feature_1  feature_2  feature_3  feature_4  feature_x
