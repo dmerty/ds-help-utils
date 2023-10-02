@@ -73,7 +73,7 @@ class HighCorrRemoval(BaseEstimator, TransformerMixin):
         self : object
             Fitted removal.
         """
-        corr = X.corr(method=self.method)
+        corr = X.corr(method=self.method, numeric_only=True)
 
         sl = np.triu(corr.abs() > self.corr_threshold, k=1)
         grid_x, grid_y = np.meshgrid(np.arange(len(sl)), np.arange(len(sl)))
