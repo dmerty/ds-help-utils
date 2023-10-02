@@ -2,7 +2,7 @@ from setuptools import find_packages, setup
 
 setup(
     name="ds-help-utils",
-    version="0.1.0",
+    version="0.1.1",
     description="A package to help do DS tasks more easily",
     author="Dmitriy Emelianov",
     author_email="asdqwer92@gmail.com",
